@@ -1,5 +1,7 @@
 ^diff_to_blead\.pl$
-
+\.git/
+\.gitignore$
+\bMYMETA\.(?:json|yml)$
 # Default section:
 # Avoid version control files.
 \bRCS\b
@@ -26,3 +28,4 @@
 \.bak$
 \#$
 \b\.#
+\..*\.sw[op]$
