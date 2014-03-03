@@ -10,6 +10,7 @@ WriteMakefile(
   ($] >= 5.005 ?
   (ABSTRACT_FROM => 'lib/Attribute/Handlers.pm',
    'AUTHOR'      => 'Damian Conway') : ()),
+  PREREQ_PM     => { parent => 0 },
   META_MERGE => {
     resources => {
       repository  => 'git://perl5.git.perl.org/perl.git perl-git',
