@@ -4,7 +4,7 @@ use Carp;
 use warnings;
 use strict;
 use vars qw($VERSION $AUTOLOAD);
-$VERSION = '0.93'; # remember to update version in POD!
+$VERSION = '0.95'; # remember to update version in POD!
 # $DB::single=1;
 
 my %symcache;
@@ -266,8 +266,7 @@ Attribute::Handlers - Simpler definition of attribute handlers
 
 =head1 VERSION
 
-This document describes version 0.93 of Attribute::Handlers,
-released July 20, 2011.
+This document describes version 0.95 of Attribute::Handlers.
 
 =head1 SYNOPSIS
 
@@ -366,7 +365,7 @@ Thereafter, any subroutine declared with a C<:Loud> attribute in the class
 LoudDecl:
 
     package LoudDecl;
-    
+
     sub foo: Loud {...}
 
 causes the above handler to be invoked, and passed:
@@ -581,7 +580,7 @@ variables. For example:
 
     use Attribute::Handlers;
     use Tie::Cycle;
-    
+
     sub UNIVERSAL::Cycle : ATTR(SCALAR) {
 	my ($package, $symbol, $referent, $attr, $data, $phase) = @_;
 	$data = [ $data ] unless ref $data eq 'ARRAY';
@@ -591,9 +590,9 @@ variables. For example:
     # and thereafter...
 
     package main;
-    
+
     my $next : Cycle('A'..'Z');     # $next is now a tied variable
-    
+
     while (<>) {
 	print $next;
     }
@@ -655,7 +654,7 @@ If the attribute name is unqualified, the attribute is installed in the
 current package. Otherwise it is installed in the qualifier's package:
 
     package Here;
-    
+
     use Attribute::Handlers autotie => {
          Other::Good => Tie::SecureHash, # tie attr installed in Other::
                  Bad => Tie::Taxes,      # tie attr installed in Here::
@@ -668,7 +667,7 @@ facilitate this, Attribute::Handlers recognizes a special "pseudo-class" --
 C<__CALLER__>, which may be specified as the qualifier of an attribute:
 
     package Tie::Me::Kangaroo:Down::Sport;
-    
+
     use Attribute::Handlers autotie =>
 	 { '__CALLER__::Roo' => __PACKAGE__ };
 
@@ -792,7 +791,7 @@ would cause the following handlers to be invoked:
 
 
     # my %hsh :Good(q/bye) :Omni(q/bus/);
-                              
+
     MyClass::Good:ATTR(HASH)( 'SomeOtherClass',     # class
                               'LEXICAL',            # no typeglob
                               \%hsh,                # referent
@@ -800,7 +799,7 @@ would cause the following handlers to be invoked:
                               'q/bye'               # raw attr data
                               'CHECK',              # compiler phase
                             );
-                    
+
     MyClass::Omni:ATTR(HASH)( 'SomeOtherClass',     # class
                               'LEXICAL',            # no typeglob
                               \%hsh,                # referent
@@ -878,7 +877,7 @@ C<SCALAR>, C<ARRAY>, C<HASH>, C<CODE>, or C<ANY>.
 =item C<Attribute handler %s doesn't handle %s attributes>
 
 A handler for attributes of the specified name I<was> defined, but not
-for the specified type of declaration. Typically encountered whe trying
+for the specified type of declaration. Typically encountered when trying
 to apply a C<VAR> attribute handler to a subroutine, or a C<SCALAR>
 attribute handler to some other type of variable.
 
