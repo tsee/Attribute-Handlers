@@ -7,6 +7,9 @@ WriteMakefile(
   INSTALLDIRS   => 'perl',
   'LICENSE'     => 'perl',
   'INSTALLDIRS' => 'perl',
+  PREREQ_PM => {
+    'parent' => 0,
+  },
   ($] >= 5.005 ?
   (ABSTRACT_FROM => 'lib/Attribute/Handlers.pm',
    'AUTHOR'      => 'Damian Conway') : ()),
