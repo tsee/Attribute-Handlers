@@ -4,7 +4,7 @@ use Carp;
 use warnings;
 use strict;
 use vars qw($VERSION $AUTOLOAD);
-$VERSION = '0.97_01'; # remember to update version in POD!
+$VERSION = '0.98'; # remember to update version in POD!
 $VERSION =~ tr/_//d;
 # $DB::single=1;
 
